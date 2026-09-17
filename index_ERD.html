@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,18 +7,17 @@
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Manrope:wght@500;600;700;800&display=swap');
   
   :root {
-    /* Egyptian Sunset & Azure Nile Palette */
-    --sand-light: #fdf8f0;
     --gold-sun: #e59738;
     --gold-warm: #d48325;
     --gold-soft: #f4d090;
-    --sand-stone: #e6cbab;
     --nile-blue: #1c7c93;
     --nile-light: #52abc0;
     --temple-brown: #3a2212;
-    --card-bg: rgba(255, 252, 245, 0.85);
-    --card-border: rgba(229, 151, 56, 0.5);
+    
+    --card-bg: rgba(255, 255, 255, 0.58);
+    --card-border: rgba(255, 255, 255, 0.85);
     --header-bg: linear-gradient(135deg, #2b4959 0%, #1c3545 100%);
+    
     --text-main: #2c1e14;
     --text-muted: #5c4738;
     --text-light: #ffffff;
@@ -35,26 +34,31 @@
     overflow-x: auto;
   }
 
-  /* ===================== BACKGROUND SCENE ===================== */
   .scene-bg {
     position: fixed;
     inset: 0;
     z-index: 0;
     overflow: hidden;
-    background-image: url('image_2f420e.jpg'); /* الصورة المرفقة */
+    background-image: url('S2.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    animation: dynamicBg 35s ease-in-out infinite alternate;
+  }
+
+  @keyframes dynamicBg {
+    0% { transform: scale(1) translate(0, 0); }
+    50% { transform: scale(1.04) translate(-8px, -6px); }
+    100% { transform: scale(1.02) translate(6px, 4px); }
   }
 
   .vignette {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 50% 30%, rgba(253, 248, 240, 0.25) 0%, rgba(245, 230, 210, 0.55) 100%);
-    backdrop-filter: blur(1px);
+    background: radial-gradient(circle at 50% 30%, rgba(253, 248, 240, 0.2) 0%, rgba(245, 230, 210, 0.45) 100%);
+    backdrop-filter: blur(0.5px);
   }
 
-  /* ===================== HEADER ===================== */
   .page {
     position: relative;
     z-index: 1;
@@ -64,16 +68,16 @@
 
   .brand {
     text-align: center;
-    margin-bottom: 20px;
-    background: rgba(255, 253, 248, 0.75);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(229, 151, 56, 0.4);
-    border-radius: 24px;
-    padding: 20px 30px;
-    max-width: 920px;
+    margin-bottom: 25px;
+    background: rgba(255, 253, 248, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(229, 151, 56, 0.35);
+    border-radius: 28px;
+    padding: 22px 30px;
+    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0 15px 35px rgba(92, 55, 20, 0.1);
+    box-shadow: 0 15px 35px rgba(92, 55, 20, 0.08);
   }
 
   .brand-mark {
@@ -85,26 +89,30 @@
 
   .brand-glyph {
     font-size: 28px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    animation: floatIcon 4s ease-in-out infinite;
+  }
+
+  @keyframes floatIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
   }
 
   h1 {
     font-family: 'Cinzel', serif;
     font-weight: 800;
-    font-size: 40px;
+    font-size: 38px;
     letter-spacing: 2px;
     margin: 0;
     background: linear-gradient(180deg, #d48325 0%, #7c440a 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 2px 10px rgba(229, 151, 56, 0.2);
   }
 
   .subtitle {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 700;
     color: var(--temple-brown);
     margin: 4px 0 0;
@@ -112,7 +120,7 @@
   }
 
   .divider {
-    width: 260px;
+    width: 220px;
     height: 2px;
     margin: 12px auto;
     background: linear-gradient(90deg, transparent, var(--gold-sun), var(--nile-blue), transparent);
@@ -121,23 +129,90 @@
   .legend {
     display: flex;
     justify-content: center;
-    gap: 24px;
-    margin-top: 8px;
+    gap: 20px;
+    margin-top: 10px;
     flex-wrap: wrap;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--temple-brown);
   }
 
-  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
   .dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
   .dot.pk { background: #2b4959; border: 1px solid var(--nile-light); }
   .dot.fk { background: #fff; border: 2px solid var(--gold-sun); }
   .dot.line { width: 20px; height: 3px; border-radius: 2px; background: var(--gold-sun); }
 
-  /* ===================== STAGE ===================== */
+  .rel-banner {
+    max-width: 1100px;
+    margin: 0 auto 25px auto;
+    background: linear-gradient(135deg, rgba(28, 53, 69, 0.95) 0%, rgba(38, 71, 92, 0.95) 100%);
+    backdrop-filter: blur(16px);
+    color: var(--gold-soft);
+    padding: 16px 24px;
+    border-radius: 20px;
+    border: 1.5px solid rgba(229, 151, 56, 0.5);
+    box-shadow: 0 12px 35px rgba(28, 53, 69, 0.25);
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    animation: bannerSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes bannerSlideIn {
+    from { opacity: 0; transform: translateY(-12px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .rel-banner-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold-soft);
+    border-bottom: 1px solid rgba(229, 151, 56, 0.25);
+    padding-bottom: 6px;
+  }
+
+  .rel-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .rel-item {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(229, 151, 56, 0.35);
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    animation: itemPop 0.4s ease backwards;
+    animation-delay: calc(var(--idx) * 50ms);
+  }
+
+  .rel-item:hover {
+    background: rgba(229, 151, 56, 0.2);
+    border-color: var(--gold-sun);
+    transform: translateY(-2px);
+  }
+
+  @keyframes itemPop {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
   .stage-outer {
-    margin-top: 20px;
+    margin-top: 10px;
     perspective: 2600px;
     display: flex;
     justify-content: center;
@@ -147,7 +222,7 @@
     position: relative;
     width: 1760px;
     height: 920px;
-    transform: rotateX(10deg) rotateY(-4deg);
+    transform: rotateX(8deg) rotateY(-3deg);
     transform-style: preserve-3d;
   }
 
@@ -158,11 +233,12 @@
     font-size: 14px;
     letter-spacing: 2.5px;
     color: var(--nile-blue);
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
     padding: 6px 18px;
     border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    border: 1px solid rgba(28, 124, 147, 0.4);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    border: 1px solid rgba(28, 124, 147, 0.3);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -177,33 +253,34 @@
     pointer-events: none;
   }
 
-  /* ===================== CARDS ===================== */
   .card {
     position: absolute;
     width: 260px;
     background: var(--card-bg);
     border: 1.5px solid var(--card-border);
-    border-radius: 16px;
-    backdrop-filter: blur(16px) saturate(130%);
-    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    border-radius: 18px;
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
     box-shadow: 
-      0 18px 30px -10px rgba(92, 55, 20, 0.15),
-      0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+      0 12px 35px rgba(92, 55, 20, 0.08),
+      0 0 0 1px rgba(255, 255, 255, 0.6) inset;
     opacity: 0;
-    animation: rise 0.7s ease forwards;
-    animation-delay: calc(var(--i) * 70ms);
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--i) * 60ms);
+    transition: box-shadow .4s cubic-bezier(0.16, 1, 0.3, 1), opacity .4s ease, filter .4s ease, transform .4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @keyframes rise {
-    from { opacity: 0; transform: translateY(26px) translateZ(0); }
+    from { opacity: 0; transform: translateY(30px) translateZ(0); }
     to { opacity: 1; transform: translateY(0) translateZ(0); }
   }
 
   .card.hub {
     border-color: var(--gold-sun);
     box-shadow: 
-      0 20px 40px -10px rgba(212, 131, 37, 0.3),
-      0 0 25px rgba(229, 151, 56, 0.35);
+      0 16px 40px rgba(212, 131, 37, 0.18),
+      0 0 25px rgba(229, 151, 56, 0.2),
+      0 0 0 1.5px rgba(229, 151, 56, 0.4) inset;
   }
 
   .card-header {
@@ -212,34 +289,39 @@
     font-size: 15px;
     letter-spacing: 0.8px;
     color: var(--text-light);
-    padding: 12px 16px;
-    border-radius: 14px 14px 0 0;
+    padding: 14px 18px;
+    border-radius: 16px 16px 0 0;
     background: var(--header-bg);
     border-bottom: 2px solid var(--gold-sun);
     display: flex;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: filter 0.3s ease;
   }
 
-  .card-header .icon {
-    font-size: 18px;
-  }
+  .card-header:hover { filter: brightness(1.12); }
+  .card-header .icon { font-size: 18px; }
 
   .card-body {
-    padding: 10px 0 12px;
+    padding: 8px 0 12px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 0 0 16px 16px;
   }
 
+  /* تكبير مساحة الضغط وتوسيع الـ Padding عشان يبقي سهل جداً في الاستخدام */
   .field {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 3px 16px;
-    height: 26px;
+    padding: 6px 18px;
+    height: 32px;
     font-size: 12px;
     color: var(--text-muted);
     white-space: nowrap;
     font-weight: 600;
+    transition: background 0.2s ease, transform 0.1s ease;
   }
 
   .field .fname {
@@ -264,33 +346,47 @@
     width: 26px;
     text-align: center;
     padding: 2px 0;
-    border-radius: 5px;
+    border-radius: 6px;
   }
 
   .badge.pk {
     background: #2b4959;
     color: #ffffff;
-    box-shadow: 0 2px 5px rgba(43, 73, 89, 0.3);
+    box-shadow: 0 2px 5px rgba(43, 73, 89, 0.25);
   }
 
   .badge.fk {
     background: #fff;
     color: var(--gold-warm);
     border: 1.5px solid var(--gold-sun);
-    box-shadow: 0 2px 5px rgba(229, 151, 56, 0.2);
+    box-shadow: 0 2px 5px rgba(229, 151, 56, 0.15);
   }
 
   .badge.none { visibility: hidden; }
 
+  /* تكبير مساحة التفاعل وجعل زر الـ PK والـ FK مريحين جداً في الضغط */
   .field.pk-row {
-    background: rgba(43, 73, 89, 0.08);
-    border-top: 1px solid rgba(43, 73, 89, 0.1);
-    border-bottom: 1px solid rgba(43, 73, 89, 0.1);
+    background: rgba(43, 73, 89, 0.06);
+    border-top: 1px solid rgba(43, 73, 89, 0.08);
+    border-bottom: 1px solid rgba(43, 73, 89, 0.08);
+    cursor: pointer;
+  }
+  .field.pk-row:hover { 
+    background: rgba(229, 151, 56, 0.22); 
+    padding-left: 21px;
   }
 
+  .field.fk-row { 
+    cursor: pointer; 
+  }
   .field.fk-row .fname { color: #b86506; }
+  .field.fk-row:hover { 
+    background: rgba(229, 151, 56, 0.22); 
+    padding-left: 21px;
+  }
+
   .field.computed .fname { font-style: italic; color: var(--nile-blue); }
-  .field.computed .badge { color: var(--nile-blue); border: 1px dashed var(--nile-blue); background: rgba(28, 124, 147, 0.08); }
+  .field.computed .badge { color: var(--nile-blue); border: 1px dashed var(--nile-blue); background: rgba(28, 124, 147, 0.06); }
 
   footer {
     position: relative;
@@ -305,22 +401,10 @@
     margin-top: 30px;
   }
 
-  /* ===================== INTERACTIVITY & ANIMATION ===================== */
-  .card {
-    transition: box-shadow .45s ease, opacity .45s ease, filter .45s ease, transform .45s ease;
-  }
-
-  .card-header, .field.pk-row, .field.fk-row {
-    cursor: pointer;
-  }
-
-  .card-header:hover { filter: brightness(1.15); }
-  .field.pk-row:hover, .field.fk-row:hover { background: rgba(229, 151, 56, 0.22); }
-
   .card.is-dim {
-    opacity: 0.35 !important;
-    filter: saturate(0.5) brightness(0.95);
-    transform: translateY(0) scale(0.99);
+    opacity: 0.28 !important;
+    filter: saturate(0.4) brightness(0.96);
+    transform: translateY(0) scale(0.985);
   }
 
   .card.is-connected {
@@ -328,73 +412,89 @@
     border-color: var(--nile-blue);
     box-shadow: 
       0 0 0 2px var(--nile-light),
-      0 0 30px rgba(43, 123, 147, 0.35),
-      0 20px 35px -10px rgba(0,0,0,0.15);
+      0 0 25px rgba(43, 123, 147, 0.25),
+      0 15px 30px -10px rgba(0,0,0,0.1);
   }
 
   .card.is-active {
     opacity: 1;
     transform: translateY(-6px);
-    animation: cardPulse 1.7s ease-in-out infinite;
+    animation: cardPulse 2s ease-in-out infinite;
   }
 
   @keyframes cardPulse {
     0%, 100% {
       box-shadow: 
         0 0 0 3px var(--gold-sun),
-        0 0 35px rgba(229, 151, 56, 0.5),
-        0 25px 45px -10px rgba(0,0,0,0.2);
+        0 0 30px rgba(229, 151, 56, 0.4),
+        0 20px 40px -10px rgba(0,0,0,0.15);
     }
     50% {
       box-shadow: 
         0 0 0 4px var(--gold-warm),
-        0 0 55px rgba(229, 151, 56, 0.85),
-        0 25px 45px -10px rgba(0,0,0,0.2);
+        0 0 45px rgba(229, 151, 56, 0.65),
+        0 20px 40px -10px rgba(0,0,0,0.15);
     }
   }
 
   .connectors path {
-    transition: opacity .45s ease, stroke-width .45s ease;
+    transition: opacity .4s ease, stroke-width .4s ease;
   }
 
   .connectors path.is-dim-line {
-    opacity: 0.12 !important;
+    opacity: 0.08 !important;
   }
 
   .connectors path.is-active-line {
     opacity: 1 !important;
-    stroke-width: 3.5;
-    stroke-dasharray: 8 6;
-    animation: flowLine 0.9s linear infinite;
+    stroke-width: 3.2;
+    stroke-dasharray: 6 6;
+    animation: flowLine 1.2s linear infinite;
   }
 
   @keyframes flowLine {
-    to { stroke-dashoffset: -28; }
+    to { stroke-dashoffset: -24; }
+  }
+
+  .rel-label-group {
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .rel-label-bg {
+    fill: rgba(28, 53, 69, 0.88);
+    stroke: rgba(229, 151, 56, 0.6);
+    stroke-width: 1;
+    rx: 6;
+    ry: 6;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+
+  .rel-label-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    fill: #f4d090;
+    text-anchor: middle;
+    dominant-baseline: central;
+    letter-spacing: 0.5px;
   }
 
   .field.field-highlight {
     border-radius: 6px;
-    background: linear-gradient(90deg, rgba(229, 151, 56, 0.4), rgba(229, 151, 56, 0.1) 88%) !important;
-    animation: fieldPulse 1.3s ease-in-out infinite;
+    background: linear-gradient(90deg, rgba(229, 151, 56, 0.35), rgba(229, 151, 56, 0.08) 90%) !important;
+    animation: fieldGlow 1.5s ease-in-out infinite;
   }
 
-  @keyframes fieldPulse {
-    0%, 100% { box-shadow: inset 0 0 0 1px rgba(212, 131, 37, 0.7); }
-    50% { box-shadow: inset 0 0 0 2px rgba(229, 151, 56, 1), 0 0 12px rgba(229, 151, 56, 0.5); }
+  @keyframes fieldGlow {
+    0%, 100% { box-shadow: inset 0 0 0 1px rgba(212, 131, 37, 0.5); }
+    50% { box-shadow: inset 0 0 0 2px rgba(229, 151, 56, 0.9), 0 0 10px rgba(229, 151, 56, 0.4); }
   }
 
-  .field.field-highlight .badge.pk { box-shadow: 0 0 10px rgba(43, 73, 89, 0.6); }
-  .field.field-highlight .badge.fk {
-    box-shadow: 0 0 10px rgba(229, 151, 56, 0.8);
-    background: var(--gold-sun);
-    color: #fff;
-  }
-  .field.field-highlight .fname { color: #592e00; }
-
-  /* Animated Plane Group */
   .plane-follower {
     pointer-events: none;
     transition: opacity 0.3s ease;
+    filter: drop-shadow(0 3px 6px rgba(229, 151, 56, 0.5));
   }
 </style>
 </head>
@@ -419,6 +519,13 @@
       <span><i class="dot line"></i> Flight Route (Relationship)</span>
       <span>✈️ Interactive Animated Flight Paths</span>
     </div>
+  </div>
+
+  <div id="relBanner" class="rel-banner">
+    <div class="rel-banner-title">
+      <span>✨ Active Relationships Matrix</span>
+    </div>
+    <div id="relListContainer" class="rel-list"></div>
   </div>
 
   <div class="stage-outer">
@@ -561,19 +668,19 @@
 
 <script>
   const rels = [
-    {from:'c-Booking', to:'c-Tourists'},
-    {from:'c-Booking', to:'c-Tour_Package'},
-    {from:'c-Booking', to:'c-Transport'},
-    {from:'c-Booking', to:'c-Hotels'},
-    {from:'c-Reviews', to:'c-Tourists'},
-    {from:'c-Reviews', to:'c-Tour_Package'},
-    {from:'c-Activities', to:'c-Tour_Package'},
-    {from:'c-Employees', to:'c-Branches'},
-    {from:'c-Branches', to:'c-Employees'},
-    {from:'c-Employee_Language', to:'c-Employees'},
+    {from:'c-Booking', to:'c-Tourists', type:'N:1', labelText:'N:1 (Bookings ➔ Tourist)'},
+    {from:'c-Booking', to:'c-Tour_Package', type:'N:1', labelText:'N:1 (Bookings ➔ Package)'},
+    {from:'c-Booking', to:'c-Transport', type:'N:1', labelText:'N:1 (Bookings ➔ Transport)'},
+    {from:'c-Booking', to:'c-Hotels', type:'N:1', labelText:'N:1 (Bookings ➔ Hotel)'},
+    {from:'c-Reviews', to:'c-Tourists', type:'N:1', labelText:'N:1 (Reviews ➔ Tourist)'},
+    {from:'c-Reviews', to:'c-Tour_Package', type:'N:1', labelText:'N:1 (Reviews ➔ Package)'},
+    {from:'c-Activities', to:'c-Tour_Package', type:'N:1', labelText:'N:1 (Activities ➔ Package)'},
+    {from:'c-Employees', to:'c-Branches', type:'N:1', labelText:'N:1 (Employees ➔ Branch)'},
+    {from:'c-Branches', to:'c-Employees', type:'1:0..1', labelText:'1:0..1 (Branch Manager)'},
+    {from:'c-Employee_Language', to:'c-Employees', type:'N:1', labelText:'N:1 (Languages ➔ Employee)'},
   ];
 
-  let animationFrames = [];
+  let animationGroups = [];
 
   function rectOf(id){
     const el = document.getElementById(id);
@@ -602,9 +709,11 @@
   }
 
   function clearPlaneAnimations() {
-    animationFrames.forEach(id => cancelAnimationFrame(id));
-    animationFrames = [];
+    animationGroups.forEach(obj => cancelAnimationFrame(obj.frameId));
+    animationGroups = [];
     document.querySelectorAll('.plane-follower').forEach(el => el.remove());
+    document.querySelectorAll('.rel-label-group').forEach(el => el.remove());
+    document.getElementById('relBanner').style.display = 'none';
   }
 
   function draw(){
@@ -654,6 +763,7 @@
       path.setAttribute('opacity','0');
       path.dataset.relIndex = i;
       path.dataset.baseOpacity = '0.9';
+      path.dataset.relType = r.labelText;
       path.style.transition = 'opacity 0.6s ease';
       svg.appendChild(path);
       requestAnimationFrame(()=>{ setTimeout(()=>{ path.style.opacity = path.dataset.baseOpacity; }, 500); });
@@ -670,41 +780,81 @@
     svg.querySelector('defs').appendChild(grad);
   }
 
-  function animatePlaneOnPath(pathEl) {
+  function setupMultiPlanes(activeRels) {
     const svg = document.getElementById('connectors');
-    const pathLen = pathEl.getTotalLength();
-    
-    const planeGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    planeGroup.setAttribute('class', 'plane-follower');
-    
-    const planeText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    planeText.textContent = '✈️';
-    planeText.setAttribute('font-size', '18');
-    planeText.setAttribute('text-anchor', 'center');
-    planeText.setAttribute('dominant-baseline', 'central');
+    const banner = document.getElementById('relBanner');
+    const listContainer = document.getElementById('relListContainer');
+    listContainer.innerHTML = '';
 
-    planeGroup.appendChild(planeText);
-    svg.appendChild(planeGroup);
+    activeRels.forEach((r, idx) => {
+      const item = document.createElement('div');
+      item.className = 'rel-item';
+      item.style.setProperty('--idx', idx);
+      item.innerHTML = `✈️ <span>${r.labelText}</span>`;
+      listContainer.appendChild(item);
+    });
+    banner.style.display = 'flex';
 
-    let progress = 0;
-    const speed = 0.006; 
+    activeRels.forEach(r => {
+      const pathEl = document.getElementById(`path-${r.index}`);
+      if (!pathEl) return;
+      const pathLen = pathEl.getTotalLength();
 
-    function step() {
-      progress += speed;
-      if (progress > 1) progress = 0;
+      const labelGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      labelGroup.setAttribute('class', 'rel-label-group');
 
-      const pt1 = pathEl.getPointAtLength(progress * pathLen);
-      const pt2 = pathEl.getPointAtLength(Math.min((progress + 0.01), 1) * pathLen);
+      const labelBg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      const textWidth = r.type.length * 7 + 16;
+      labelBg.setAttribute('width', textWidth);
+      labelBg.setAttribute('height', '18');
+      labelBg.setAttribute('x', -textWidth / 2);
+      labelBg.setAttribute('y', '-9');
+      labelBg.setAttribute('class', 'rel-label-bg');
+
+      const labelText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      labelText.textContent = r.type;
+      labelText.setAttribute('class', 'rel-label-text');
+
+      labelGroup.appendChild(labelBg);
+      labelGroup.appendChild(labelText);
+      svg.appendChild(labelGroup);
+
+      const planeGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      planeGroup.setAttribute('class', 'plane-follower');
       
-      const angle = Math.atan2(pt2.y - pt1.y, pt2.x - pt1.x) * (180 / Math.PI);
+      const planeText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      planeText.textContent = '✈️';
+      planeText.setAttribute('font-size', '22');
+      planeText.setAttribute('text-anchor', 'middle');
+      planeText.setAttribute('dominant-baseline', 'central');
 
-      planeGroup.setAttribute('transform', `translate(${pt1.x - 9}, ${pt1.y - 9}) rotate(${angle}, 9, 9)`);
+      planeGroup.appendChild(planeText);
+      svg.appendChild(planeGroup);
 
-      const frameId = requestAnimationFrame(step);
-      animationFrames.push(frameId);
-    }
+      let progress = Math.random();
+      const speed = 0.003; 
 
-    step();
+      function step() {
+        progress += speed;
+        if (progress > 1) progress = 0;
+
+        const pt1 = pathEl.getPointAtLength(progress * pathLen);
+        const pt2 = pathEl.getPointAtLength(Math.min((progress + 0.01), 1) * pathLen);
+        const angle = Math.atan2(pt2.y - pt1.y, pt2.x - pt1.x) * (180 / Math.PI);
+        planeGroup.setAttribute('transform', `translate(${pt1.x}, ${pt1.y}) rotate(${angle})`);
+
+        const midPt = pathEl.getPointAtLength(pathLen * 0.5);
+        const midPtNext = pathEl.getPointAtLength(pathLen * 0.51);
+        let labelAngle = Math.atan2(midPtNext.y - midPt.y, midPtNext.x - midPt.x) * (180 / Math.PI);
+        if (labelAngle > 90 || labelAngle < -90) labelAngle += 180;
+        
+        labelGroup.setAttribute('transform', `translate(${midPt.x}, ${midPt.y - 14}) rotate(${labelAngle})`);
+
+        const frameId = requestAnimationFrame(step);
+        animationGroups.push({ frameId });
+      }
+      step();
+    });
   }
 
   let selectedTable = null;
@@ -726,10 +876,13 @@
 
     const relatedIdx = [];
     const connected = new Set();
+    const activeRels = [];
+
     rels.forEach((r, i) => {
       if (r.from === tableId || r.to === tableId) {
         relatedIdx.push(i);
         connected.add(r.from === tableId ? r.to : r.from);
+        activeRels.push({ ...r, index: i });
       }
     });
 
@@ -743,11 +896,12 @@
       const idx = parseInt(p.dataset.relIndex, 10);
       if (relatedIdx.includes(idx)) {
         p.classList.add('is-active-line');
-        animatePlaneOnPath(p);
       } else {
         p.classList.add('is-dim-line');
       }
     });
+
+    setupMultiPlanes(activeRels);
 
     rels.forEach(r => {
       let sourceId, targetId;
@@ -768,14 +922,18 @@
   }
 
   function initInteractivity(){
+    // تفعيل الضغط على الهيدر وصفوف الـ PK بمساحة مريحة جداً
     document.querySelectorAll('.card-header, .field.pk-row').forEach(el => {
+      el.style.cursor = 'pointer';
       el.addEventListener('click', e => {
         e.stopPropagation();
         toggleSelect(el.closest('.card').id);
       });
     });
 
+    // تفعيل الضغط على صفوف الـ FK بمساحة أوسع
     document.querySelectorAll('.field.fk-row').forEach(el => {
+      el.style.cursor = 'pointer';
       el.addEventListener('click', e => {
         e.stopPropagation();
         const ref = el.dataset.ref;
