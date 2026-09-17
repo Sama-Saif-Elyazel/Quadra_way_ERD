@@ -7,17 +7,17 @@
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Manrope:wght@500;600;700;800&display=swap');
   
   :root {
-    --sand-light: #fdf8f0;
     --gold-sun: #e59738;
     --gold-warm: #d48325;
     --gold-soft: #f4d090;
-    --sand-stone: #e6cbab;
     --nile-blue: #1c7c93;
     --nile-light: #52abc0;
     --temple-brown: #3a2212;
-    --card-bg: rgba(255, 252, 245, 0.88);
-    --card-border: rgba(229, 151, 56, 0.5);
+    
+    --card-bg: rgba(255, 255, 255, 0.58);
+    --card-border: rgba(255, 255, 255, 0.85);
     --header-bg: linear-gradient(135deg, #2b4959 0%, #1c3545 100%);
+    
     --text-main: #2c1e14;
     --text-muted: #5c4738;
     --text-light: #ffffff;
@@ -34,26 +34,31 @@
     overflow-x: auto;
   }
 
-  /* ===================== BACKGROUND SCENE ===================== */
   .scene-bg {
     position: fixed;
     inset: 0;
     z-index: 0;
     overflow: hidden;
-    background-image: url('image_2f420e.jpg');
+    background-image: url('S2.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    animation: dynamicBg 35s ease-in-out infinite alternate;
+  }
+
+  @keyframes dynamicBg {
+    0% { transform: scale(1) translate(0, 0); }
+    50% { transform: scale(1.04) translate(-8px, -6px); }
+    100% { transform: scale(1.02) translate(6px, 4px); }
   }
 
   .vignette {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 50% 30%, rgba(253, 248, 240, 0.25) 0%, rgba(245, 230, 210, 0.55) 100%);
-    backdrop-filter: blur(1px);
+    background: radial-gradient(circle at 50% 30%, rgba(253, 248, 240, 0.2) 0%, rgba(245, 230, 210, 0.45) 100%);
+    backdrop-filter: blur(0.5px);
   }
 
-  /* ===================== HEADER ===================== */
   .page {
     position: relative;
     z-index: 1;
@@ -63,16 +68,16 @@
 
   .brand {
     text-align: center;
-    margin-bottom: 20px;
-    background: rgba(255, 253, 248, 0.82);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(229, 151, 56, 0.4);
-    border-radius: 24px;
-    padding: 20px 30px;
+    margin-bottom: 25px;
+    background: rgba(255, 253, 248, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(229, 151, 56, 0.35);
+    border-radius: 28px;
+    padding: 22px 30px;
     max-width: 960px;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0 15px 35px rgba(92, 55, 20, 0.12);
+    box-shadow: 0 15px 35px rgba(92, 55, 20, 0.08);
   }
 
   .brand-mark {
@@ -84,26 +89,30 @@
 
   .brand-glyph {
     font-size: 28px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    animation: floatIcon 4s ease-in-out infinite;
+  }
+
+  @keyframes floatIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
   }
 
   h1 {
     font-family: 'Cinzel', serif;
     font-weight: 800;
-    font-size: 40px;
+    font-size: 38px;
     letter-spacing: 2px;
     margin: 0;
     background: linear-gradient(180deg, #d48325 0%, #7c440a 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 2px 10px rgba(229, 151, 56, 0.2);
   }
 
   .subtitle {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 700;
     color: var(--temple-brown);
     margin: 4px 0 0;
@@ -111,7 +120,7 @@
   }
 
   .divider {
-    width: 260px;
+    width: 220px;
     height: 2px;
     margin: 12px auto;
     background: linear-gradient(90deg, transparent, var(--gold-sun), var(--nile-blue), transparent);
@@ -134,34 +143,74 @@
   .dot.fk { background: #fff; border: 2px solid var(--gold-sun); }
   .dot.line { width: 20px; height: 3px; border-radius: 2px; background: var(--gold-sun); }
 
-  /* شريط معلومات العلاقات الثابت في الأعلى */
   .rel-banner {
-    max-width: 960px;
-    margin: 0 auto 20px auto;
-    background: rgba(28, 53, 69, 0.94);
-    backdrop-filter: blur(10px);
+    max-width: 1100px;
+    margin: 0 auto 25px auto;
+    background: linear-gradient(135deg, rgba(28, 53, 69, 0.95) 0%, rgba(38, 71, 92, 0.95) 100%);
+    backdrop-filter: blur(16px);
     color: var(--gold-soft);
-    padding: 12px 24px;
-    font-size: 14px;
-    font-family: 'Cinzel', serif;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    border-radius: 16px;
-    border: 1.5px solid var(--gold-sun);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    padding: 16px 24px;
+    border-radius: 20px;
+    border: 1.5px solid rgba(229, 151, 56, 0.5);
+    box-shadow: 0 12px 35px rgba(28, 53, 69, 0.25);
     display: none;
+    flex-direction: column;
+    gap: 10px;
+    animation: bannerSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes bannerSlideIn {
+    from { opacity: 0; transform: translateY(-12px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .rel-banner-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
-    animation: fadeInBanner 0.4s ease;
+    gap: 8px;
+    color: var(--gold-soft);
+    border-bottom: 1px solid rgba(229, 151, 56, 0.25);
+    padding-bottom: 6px;
   }
 
-  @keyframes fadeInBanner {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+  .rel-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
-  /* ===================== STAGE ===================== */
+  .rel-item {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(229, 151, 56, 0.35);
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    animation: itemPop 0.4s ease backwards;
+    animation-delay: calc(var(--idx) * 50ms);
+  }
+
+  .rel-item:hover {
+    background: rgba(229, 151, 56, 0.2);
+    border-color: var(--gold-sun);
+    transform: translateY(-2px);
+  }
+
+  @keyframes itemPop {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
   .stage-outer {
     margin-top: 10px;
     perspective: 2600px;
@@ -173,7 +222,7 @@
     position: relative;
     width: 1760px;
     height: 920px;
-    transform: rotateX(10deg) rotateY(-4deg);
+    transform: rotateX(8deg) rotateY(-3deg);
     transform-style: preserve-3d;
   }
 
@@ -184,11 +233,12 @@
     font-size: 14px;
     letter-spacing: 2.5px;
     color: var(--nile-blue);
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
     padding: 6px 18px;
     border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    border: 1px solid rgba(28, 124, 147, 0.4);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    border: 1px solid rgba(28, 124, 147, 0.3);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -203,34 +253,34 @@
     pointer-events: none;
   }
 
-  /* ===================== CARDS ===================== */
   .card {
     position: absolute;
     width: 260px;
     background: var(--card-bg);
     border: 1.5px solid var(--card-border);
-    border-radius: 16px;
-    backdrop-filter: blur(16px) saturate(130%);
-    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    border-radius: 18px;
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
     box-shadow: 
-      0 18px 30px -10px rgba(92, 55, 20, 0.15),
-      0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+      0 12px 35px rgba(92, 55, 20, 0.08),
+      0 0 0 1px rgba(255, 255, 255, 0.6) inset;
     opacity: 0;
-    animation: rise 0.7s ease forwards;
-    animation-delay: calc(var(--i) * 70ms);
-    transition: box-shadow .45s ease, opacity .45s ease, filter .45s ease, transform .45s ease;
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--i) * 60ms);
+    transition: box-shadow .4s cubic-bezier(0.16, 1, 0.3, 1), opacity .4s ease, filter .4s ease, transform .4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @keyframes rise {
-    from { opacity: 0; transform: translateY(26px) translateZ(0); }
+    from { opacity: 0; transform: translateY(30px) translateZ(0); }
     to { opacity: 1; transform: translateY(0) translateZ(0); }
   }
 
   .card.hub {
     border-color: var(--gold-sun);
     box-shadow: 
-      0 20px 40px -10px rgba(212, 131, 37, 0.3),
-      0 0 25px rgba(229, 151, 56, 0.35);
+      0 16px 40px rgba(212, 131, 37, 0.18),
+      0 0 25px rgba(229, 151, 56, 0.2),
+      0 0 0 1.5px rgba(229, 151, 56, 0.4) inset;
   }
 
   .card-header {
@@ -239,34 +289,39 @@
     font-size: 15px;
     letter-spacing: 0.8px;
     color: var(--text-light);
-    padding: 12px 16px;
-    border-radius: 14px 14px 0 0;
+    padding: 14px 18px;
+    border-radius: 16px 16px 0 0;
     background: var(--header-bg);
     border-bottom: 2px solid var(--gold-sun);
     display: flex;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     cursor: pointer;
+    transition: filter 0.3s ease;
   }
 
-  .card-header:hover { filter: brightness(1.15); }
+  .card-header:hover { filter: brightness(1.12); }
   .card-header .icon { font-size: 18px; }
 
   .card-body {
-    padding: 10px 0 12px;
+    padding: 8px 0 12px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 0 0 16px 16px;
   }
 
+  /* تكبير مساحة الضغط وتوسيع الـ Padding عشان يبقي سهل جداً في الاستخدام */
   .field {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 3px 16px;
-    height: 26px;
+    padding: 6px 18px;
+    height: 32px;
     font-size: 12px;
     color: var(--text-muted);
     white-space: nowrap;
     font-weight: 600;
+    transition: background 0.2s ease, transform 0.1s ease;
   }
 
   .field .fname {
@@ -291,38 +346,47 @@
     width: 26px;
     text-align: center;
     padding: 2px 0;
-    border-radius: 5px;
+    border-radius: 6px;
   }
 
   .badge.pk {
     background: #2b4959;
     color: #ffffff;
-    box-shadow: 0 2px 5px rgba(43, 73, 89, 0.3);
+    box-shadow: 0 2px 5px rgba(43, 73, 89, 0.25);
   }
 
   .badge.fk {
     background: #fff;
     color: var(--gold-warm);
     border: 1.5px solid var(--gold-sun);
-    box-shadow: 0 2px 5px rgba(229, 151, 56, 0.2);
+    box-shadow: 0 2px 5px rgba(229, 151, 56, 0.15);
   }
 
   .badge.none { visibility: hidden; }
 
+  /* تكبير مساحة التفاعل وجعل زر الـ PK والـ FK مريحين جداً في الضغط */
   .field.pk-row {
-    background: rgba(43, 73, 89, 0.08);
-    border-top: 1px solid rgba(43, 73, 89, 0.1);
-    border-bottom: 1px solid rgba(43, 73, 89, 0.1);
+    background: rgba(43, 73, 89, 0.06);
+    border-top: 1px solid rgba(43, 73, 89, 0.08);
+    border-bottom: 1px solid rgba(43, 73, 89, 0.08);
     cursor: pointer;
   }
-  .field.pk-row:hover { background: rgba(229, 151, 56, 0.22); }
+  .field.pk-row:hover { 
+    background: rgba(229, 151, 56, 0.22); 
+    padding-left: 21px;
+  }
 
-  .field.fk-row { cursor: pointer; }
+  .field.fk-row { 
+    cursor: pointer; 
+  }
   .field.fk-row .fname { color: #b86506; }
-  .field.fk-row:hover { background: rgba(229, 151, 56, 0.22); }
+  .field.fk-row:hover { 
+    background: rgba(229, 151, 56, 0.22); 
+    padding-left: 21px;
+  }
 
   .field.computed .fname { font-style: italic; color: var(--nile-blue); }
-  .field.computed .badge { color: var(--nile-blue); border: 1px dashed var(--nile-blue); background: rgba(28, 124, 147, 0.08); }
+  .field.computed .badge { color: var(--nile-blue); border: 1px dashed var(--nile-blue); background: rgba(28, 124, 147, 0.06); }
 
   footer {
     position: relative;
@@ -337,11 +401,10 @@
     margin-top: 30px;
   }
 
-  /* ===================== INTERACTIVITY & ANIMATION ===================== */
   .card.is-dim {
-    opacity: 0.35 !important;
-    filter: saturate(0.5) brightness(0.95);
-    transform: translateY(0) scale(0.99);
+    opacity: 0.28 !important;
+    filter: saturate(0.4) brightness(0.96);
+    transform: translateY(0) scale(0.985);
   }
 
   .card.is-connected {
@@ -349,65 +412,89 @@
     border-color: var(--nile-blue);
     box-shadow: 
       0 0 0 2px var(--nile-light),
-      0 0 30px rgba(43, 123, 147, 0.35),
-      0 20px 35px -10px rgba(0,0,0,0.15);
+      0 0 25px rgba(43, 123, 147, 0.25),
+      0 15px 30px -10px rgba(0,0,0,0.1);
   }
 
   .card.is-active {
     opacity: 1;
     transform: translateY(-6px);
-    animation: cardPulse 1.7s ease-in-out infinite;
+    animation: cardPulse 2s ease-in-out infinite;
   }
 
   @keyframes cardPulse {
     0%, 100% {
       box-shadow: 
         0 0 0 3px var(--gold-sun),
-        0 0 35px rgba(229, 151, 56, 0.5),
-        0 25px 45px -10px rgba(0,0,0,0.2);
+        0 0 30px rgba(229, 151, 56, 0.4),
+        0 20px 40px -10px rgba(0,0,0,0.15);
     }
     50% {
       box-shadow: 
         0 0 0 4px var(--gold-warm),
-        0 0 55px rgba(229, 151, 56, 0.85),
-        0 25px 45px -10px rgba(0,0,0,0.2);
+        0 0 45px rgba(229, 151, 56, 0.65),
+        0 20px 40px -10px rgba(0,0,0,0.15);
     }
   }
 
   .connectors path {
-    transition: opacity .45s ease, stroke-width .45s ease;
+    transition: opacity .4s ease, stroke-width .4s ease;
   }
 
   .connectors path.is-dim-line {
-    opacity: 0.12 !important;
+    opacity: 0.08 !important;
   }
 
   .connectors path.is-active-line {
     opacity: 1 !important;
-    stroke-width: 3.5;
-    stroke-dasharray: 8 6;
-    animation: flowLine 0.9s linear infinite;
+    stroke-width: 3.2;
+    stroke-dasharray: 6 6;
+    animation: flowLine 1.2s linear infinite;
   }
 
   @keyframes flowLine {
-    to { stroke-dashoffset: -28; }
+    to { stroke-dashoffset: -24; }
+  }
+
+  .rel-label-group {
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .rel-label-bg {
+    fill: rgba(28, 53, 69, 0.88);
+    stroke: rgba(229, 151, 56, 0.6);
+    stroke-width: 1;
+    rx: 6;
+    ry: 6;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+
+  .rel-label-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    fill: #f4d090;
+    text-anchor: middle;
+    dominant-baseline: central;
+    letter-spacing: 0.5px;
   }
 
   .field.field-highlight {
     border-radius: 6px;
-    background: linear-gradient(90deg, rgba(229, 151, 56, 0.4), rgba(229, 151, 56, 0.1) 88%) !important;
-    animation: fieldPulse 1.3s ease-in-out infinite;
+    background: linear-gradient(90deg, rgba(229, 151, 56, 0.35), rgba(229, 151, 56, 0.08) 90%) !important;
+    animation: fieldGlow 1.5s ease-in-out infinite;
   }
 
-  @keyframes fieldPulse {
-    0%, 100% { box-shadow: inset 0 0 0 1px rgba(212, 131, 37, 0.7); }
-    50% { box-shadow: inset 0 0 0 2px rgba(229, 151, 56, 1), 0 0 12px rgba(229, 151, 56, 0.5); }
+  @keyframes fieldGlow {
+    0%, 100% { box-shadow: inset 0 0 0 1px rgba(212, 131, 37, 0.5); }
+    50% { box-shadow: inset 0 0 0 2px rgba(229, 151, 56, 0.9), 0 0 10px rgba(229, 151, 56, 0.4); }
   }
 
   .plane-follower {
     pointer-events: none;
     transition: opacity 0.3s ease;
-    filter: drop-shadow(0 2px 5px rgba(229, 151, 56, 0.6));
+    filter: drop-shadow(0 3px 6px rgba(229, 151, 56, 0.5));
   }
 </style>
 </head>
@@ -434,10 +521,11 @@
     </div>
   </div>
 
-  <!-- شريط معلومات العلاقات الثابت في الأعلى -->
   <div id="relBanner" class="rel-banner">
-    <span>⚡ Relationship Cardinality:</span>
-    <span id="relText" style="color: #ffffff;">-</span>
+    <div class="rel-banner-title">
+      <span>✨ Active Relationships Matrix</span>
+    </div>
+    <div id="relListContainer" class="rel-list"></div>
   </div>
 
   <div class="stage-outer">
@@ -580,19 +668,19 @@
 
 <script>
   const rels = [
-    {from:'c-Booking', to:'c-Tourists', type:'Many-to-One (N:1)  [Bookings ➔ Tourist]'},
-    {from:'c-Booking', to:'c-Tour_Package', type:'Many-to-One (N:1)  [Bookings ➔ Package]'},
-    {from:'c-Booking', to:'c-Transport', type:'Many-to-One (N:1)  [Bookings ➔ Transport]'},
-    {from:'c-Booking', to:'c-Hotels', type:'Many-to-One (N:1)  [Bookings ➔ Hotel]'},
-    {from:'c-Reviews', to:'c-Tourists', type:'Many-to-One (N:1)  [Reviews ➔ Tourist]'},
-    {from:'c-Reviews', to:'c-Tour_Package', type:'Many-to-One (N:1)  [Reviews ➔ Package]'},
-    {from:'c-Activities', to:'c-Tour_Package', type:'Many-to-One (N:1)  [Activities ➔ Package]'},
-    {from:'c-Employees', to:'c-Branches', type:'Many-to-One (N:1)  [Employees ➔ Branch]'},
-    {from:'c-Branches', to:'c-Employees', type:'One-to-One / Zero-to-One (1:0..1)  [Branch Manager]'},
-    {from:'c-Employee_Language', to:'c-Employees', type:'Many-to-One (N:1)  [Languages ➔ Employee]'},
+    {from:'c-Booking', to:'c-Tourists', type:'N:1', labelText:'N:1 (Bookings ➔ Tourist)'},
+    {from:'c-Booking', to:'c-Tour_Package', type:'N:1', labelText:'N:1 (Bookings ➔ Package)'},
+    {from:'c-Booking', to:'c-Transport', type:'N:1', labelText:'N:1 (Bookings ➔ Transport)'},
+    {from:'c-Booking', to:'c-Hotels', type:'N:1', labelText:'N:1 (Bookings ➔ Hotel)'},
+    {from:'c-Reviews', to:'c-Tourists', type:'N:1', labelText:'N:1 (Reviews ➔ Tourist)'},
+    {from:'c-Reviews', to:'c-Tour_Package', type:'N:1', labelText:'N:1 (Reviews ➔ Package)'},
+    {from:'c-Activities', to:'c-Tour_Package', type:'N:1', labelText:'N:1 (Activities ➔ Package)'},
+    {from:'c-Employees', to:'c-Branches', type:'N:1', labelText:'N:1 (Employees ➔ Branch)'},
+    {from:'c-Branches', to:'c-Employees', type:'1:0..1', labelText:'1:0..1 (Branch Manager)'},
+    {from:'c-Employee_Language', to:'c-Employees', type:'N:1', labelText:'N:1 (Languages ➔ Employee)'},
   ];
 
-  let animationFrames = [];
+  let animationGroups = [];
 
   function rectOf(id){
     const el = document.getElementById(id);
@@ -621,9 +709,10 @@
   }
 
   function clearPlaneAnimations() {
-    animationFrames.forEach(id => cancelAnimationFrame(id));
-    animationFrames = [];
+    animationGroups.forEach(obj => cancelAnimationFrame(obj.frameId));
+    animationGroups = [];
     document.querySelectorAll('.plane-follower').forEach(el => el.remove());
+    document.querySelectorAll('.rel-label-group').forEach(el => el.remove());
     document.getElementById('relBanner').style.display = 'none';
   }
 
@@ -674,7 +763,7 @@
       path.setAttribute('opacity','0');
       path.dataset.relIndex = i;
       path.dataset.baseOpacity = '0.9';
-      path.dataset.relType = r.type;
+      path.dataset.relType = r.labelText;
       path.style.transition = 'opacity 0.6s ease';
       svg.appendChild(path);
       requestAnimationFrame(()=>{ setTimeout(()=>{ path.style.opacity = path.dataset.baseOpacity; }, 500); });
@@ -691,47 +780,81 @@
     svg.querySelector('defs').appendChild(grad);
   }
 
-  function animatePlaneOnPath(pathEl, relType) {
+  function setupMultiPlanes(activeRels) {
     const svg = document.getElementById('connectors');
-    const pathLen = pathEl.getTotalLength();
-    
-    const planeGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    planeGroup.setAttribute('class', 'plane-follower');
-    
-    // إيموجي الطيارة الكلاسيكي الواضح والمظبوط كمسار طيران حقيقي
-    const planeText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    planeText.textContent = '✈️';
-    planeText.setAttribute('font-size', '20');
-    planeText.setAttribute('text-anchor', 'middle');
-    planeText.setAttribute('dominant-baseline', 'central');
-
-    planeGroup.appendChild(planeText);
-    svg.appendChild(planeGroup);
-
-    // إظهار نوع العلاقة في الشريط العلوي الثابت
     const banner = document.getElementById('relBanner');
-    document.getElementById('relText').textContent = relType;
+    const listContainer = document.getElementById('relListContainer');
+    listContainer.innerHTML = '';
+
+    activeRels.forEach((r, idx) => {
+      const item = document.createElement('div');
+      item.className = 'rel-item';
+      item.style.setProperty('--idx', idx);
+      item.innerHTML = `✈️ <span>${r.labelText}</span>`;
+      listContainer.appendChild(item);
+    });
     banner.style.display = 'flex';
 
-    let progress = 0;
-    const speed = 0.005; 
+    activeRels.forEach(r => {
+      const pathEl = document.getElementById(`path-${r.index}`);
+      if (!pathEl) return;
+      const pathLen = pathEl.getTotalLength();
 
-    function step() {
-      progress += speed;
-      if (progress > 1) progress = 0;
+      const labelGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      labelGroup.setAttribute('class', 'rel-label-group');
 
-      const pt1 = pathEl.getPointAtLength(progress * pathLen);
-      const pt2 = pathEl.getPointAtLength(Math.min((progress + 0.01), 1) * pathLen);
+      const labelBg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      const textWidth = r.type.length * 7 + 16;
+      labelBg.setAttribute('width', textWidth);
+      labelBg.setAttribute('height', '18');
+      labelBg.setAttribute('x', -textWidth / 2);
+      labelBg.setAttribute('y', '-9');
+      labelBg.setAttribute('class', 'rel-label-bg');
+
+      const labelText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      labelText.textContent = r.type;
+      labelText.setAttribute('class', 'rel-label-text');
+
+      labelGroup.appendChild(labelBg);
+      labelGroup.appendChild(labelText);
+      svg.appendChild(labelGroup);
+
+      const planeGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      planeGroup.setAttribute('class', 'plane-follower');
       
-      const angle = Math.atan2(pt2.y - pt1.y, pt2.x - pt1.x) * (180 / Math.PI);
+      const planeText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      planeText.textContent = '✈️';
+      planeText.setAttribute('font-size', '22');
+      planeText.setAttribute('text-anchor', 'middle');
+      planeText.setAttribute('dominant-baseline', 'central');
 
-      planeGroup.setAttribute('transform', `translate(${pt1.x}, ${pt1.y}) rotate(${angle})`);
+      planeGroup.appendChild(planeText);
+      svg.appendChild(planeGroup);
 
-      const frameId = requestAnimationFrame(step);
-      animationFrames.push(frameId);
-    }
+      let progress = Math.random();
+      const speed = 0.003; 
 
-    step();
+      function step() {
+        progress += speed;
+        if (progress > 1) progress = 0;
+
+        const pt1 = pathEl.getPointAtLength(progress * pathLen);
+        const pt2 = pathEl.getPointAtLength(Math.min((progress + 0.01), 1) * pathLen);
+        const angle = Math.atan2(pt2.y - pt1.y, pt2.x - pt1.x) * (180 / Math.PI);
+        planeGroup.setAttribute('transform', `translate(${pt1.x}, ${pt1.y}) rotate(${angle})`);
+
+        const midPt = pathEl.getPointAtLength(pathLen * 0.5);
+        const midPtNext = pathEl.getPointAtLength(pathLen * 0.51);
+        let labelAngle = Math.atan2(midPtNext.y - midPt.y, midPtNext.x - midPt.x) * (180 / Math.PI);
+        if (labelAngle > 90 || labelAngle < -90) labelAngle += 180;
+        
+        labelGroup.setAttribute('transform', `translate(${midPt.x}, ${midPt.y - 14}) rotate(${labelAngle})`);
+
+        const frameId = requestAnimationFrame(step);
+        animationGroups.push({ frameId });
+      }
+      step();
+    });
   }
 
   let selectedTable = null;
@@ -753,10 +876,13 @@
 
     const relatedIdx = [];
     const connected = new Set();
+    const activeRels = [];
+
     rels.forEach((r, i) => {
       if (r.from === tableId || r.to === tableId) {
         relatedIdx.push(i);
         connected.add(r.from === tableId ? r.to : r.from);
+        activeRels.push({ ...r, index: i });
       }
     });
 
@@ -770,11 +896,12 @@
       const idx = parseInt(p.dataset.relIndex, 10);
       if (relatedIdx.includes(idx)) {
         p.classList.add('is-active-line');
-        animatePlaneOnPath(p, p.dataset.relType);
       } else {
         p.classList.add('is-dim-line');
       }
     });
+
+    setupMultiPlanes(activeRels);
 
     rels.forEach(r => {
       let sourceId, targetId;
@@ -795,814 +922,18 @@
   }
 
   function initInteractivity(){
+    // تفعيل الضغط على الهيدر وصفوف الـ PK بمساحة مريحة جداً
     document.querySelectorAll('.card-header, .field.pk-row').forEach(el => {
+      el.style.cursor = 'pointer';
       el.addEventListener('click', e => {
         e.stopPropagation();
         toggleSelect(el.closest('.card').id);
       });
     });
 
+    // تفعيل الضغط على صفوف الـ FK بمساحة أوسع
     document.querySelectorAll('.field.fk-row').forEach(el => {
-      el.addEventListener('click', e => {
-        e.stopPropagation();
-        const ref = el.dataset.ref;
-        if (ref) toggleSelect(ref);
-      });
-    });
-
-    document.getElementById('stage').addEventListener('click', () => applySelection(null));
-  }
-
-  window.addEventListener('load', () => {
-    draw();
-    initInteractivity();
-  });
-  window.addEventListener('resize', () => {
-    draw();
-    if (selectedTable) applySelection(selectedTable);
-  });
-</script>
-
-</body>
-</html>
- <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Quadra Way — Tourism & Travel Database Architecture</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Manrope:wght@500;600;700;800&display=swap');
-  
-  :root {
-    /* Egyptian Sunset & Azure Nile Palette */
-    --sand-light: #fdf8f0;
-    --gold-sun: #e59738;
-    --gold-warm: #d48325;
-    --gold-soft: #f4d090;
-    --sand-stone: #e6cbab;
-    --nile-blue: #1c7c93;
-    --nile-light: #52abc0;
-    --temple-brown: #3a2212;
-    --card-bg: rgba(255, 252, 245, 0.85);
-    --card-border: rgba(229, 151, 56, 0.5);
-    --header-bg: linear-gradient(135deg, #2b4959 0%, #1c3545 100%);
-    --text-main: #2c1e14;
-    --text-muted: #5c4738;
-    --text-light: #ffffff;
-  }
-
-  *{ box-sizing: border-box; }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: #fbf5ed;
-    font-family: 'Manrope', sans-serif;
-    color: var(--text-main);
-    overflow-x: auto;
-  }
-
-  /* ===================== BACKGROUND SCENE ===================== */
-  .scene-bg {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    background-image: url('image_2f420e.jpg'); /* الصورة المرفقة */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .vignette {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 30%, rgba(253, 248, 240, 0.25) 0%, rgba(245, 230, 210, 0.55) 100%);
-    backdrop-filter: blur(1px);
-  }
-
-  /* ===================== HEADER ===================== */
-  .page {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    padding: 30px 40px 80px;
-  }
-
-  .brand {
-    text-align: center;
-    margin-bottom: 20px;
-    background: rgba(255, 253, 248, 0.75);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(229, 151, 56, 0.4);
-    border-radius: 24px;
-    padding: 20px 30px;
-    max-width: 920px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 15px 35px rgba(92, 55, 20, 0.1);
-  }
-
-  .brand-mark {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 4px;
-  }
-
-  .brand-glyph {
-    font-size: 28px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-  }
-
-  h1 {
-    font-family: 'Cinzel', serif;
-    font-weight: 800;
-    font-size: 40px;
-    letter-spacing: 2px;
-    margin: 0;
-    background: linear-gradient(180deg, #d48325 0%, #7c440a 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 2px 10px rgba(229, 151, 56, 0.2);
-  }
-
-  .subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--temple-brown);
-    margin: 4px 0 0;
-    letter-spacing: 0.5px;
-  }
-
-  .divider {
-    width: 260px;
-    height: 2px;
-    margin: 12px auto;
-    background: linear-gradient(90deg, transparent, var(--gold-sun), var(--nile-blue), transparent);
-  }
-
-  .legend {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    margin-top: 8px;
-    flex-wrap: wrap;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--temple-brown);
-  }
-
-  .legend span { display: inline-flex; align-items: center; gap: 8px; }
-  .dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
-  .dot.pk { background: #2b4959; border: 1px solid var(--nile-light); }
-  .dot.fk { background: #fff; border: 2px solid var(--gold-sun); }
-  .dot.line { width: 20px; height: 3px; border-radius: 2px; background: var(--gold-sun); }
-
-  /* ===================== STAGE ===================== */
-  .stage-outer {
-    margin-top: 20px;
-    perspective: 2600px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .stage {
-    position: relative;
-    width: 1760px;
-    height: 920px;
-    transform: rotateX(10deg) rotateY(-4deg);
-    transform-style: preserve-3d;
-  }
-
-  .island-label {
-    position: absolute;
-    font-family: 'Cinzel', serif;
-    font-weight: 800;
-    font-size: 14px;
-    letter-spacing: 2.5px;
-    color: var(--nile-blue);
-    background: rgba(255, 255, 255, 0.9);
-    padding: 6px 18px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    border: 1px solid rgba(28, 124, 147, 0.4);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  svg.connectors {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    pointer-events: none;
-  }
-
-  /* ===================== CARDS ===================== */
-  .card {
-    position: absolute;
-    width: 260px;
-    background: var(--card-bg);
-    border: 1.5px solid var(--card-border);
-    border-radius: 16px;
-    backdrop-filter: blur(16px) saturate(130%);
-    -webkit-backdrop-filter: blur(16px) saturate(130%);
-    box-shadow: 
-      0 18px 30px -10px rgba(92, 55, 20, 0.15),
-      0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-    opacity: 0;
-    animation: rise 0.7s ease forwards;
-    animation-delay: calc(var(--i) * 70ms);
-  }
-
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(26px) translateZ(0); }
-    to { opacity: 1; transform: translateY(0) translateZ(0); }
-  }
-
-  .card.hub {
-    border-color: var(--gold-sun);
-    box-shadow: 
-      0 20px 40px -10px rgba(212, 131, 37, 0.3),
-      0 0 25px rgba(229, 151, 56, 0.35);
-  }
-
-  .card-header {
-    font-family: 'Cinzel', serif;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 0.8px;
-    color: var(--text-light);
-    padding: 12px 16px;
-    border-radius: 14px 14px 0 0;
-    background: var(--header-bg);
-    border-bottom: 2px solid var(--gold-sun);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-
-  .card-header .icon {
-    font-size: 18px;
-  }
-
-  .card-body {
-    padding: 10px 0 12px;
-  }
-
-  .field {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 3px 16px;
-    height: 26px;
-    font-size: 12px;
-    color: var(--text-muted);
-    white-space: nowrap;
-    font-weight: 600;
-  }
-
-  .field .fname {
-    color: var(--text-main);
-    font-weight: 700;
-    flex: 0 0 auto;
-  }
-
-  .field .ftype {
-    color: #7a6352;
-    font-weight: 500;
-    font-size: 11px;
-    margin-left: auto;
-    padding-left: 8px;
-  }
-
-  .badge {
-    flex: 0 0 auto;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.4px;
-    width: 26px;
-    text-align: center;
-    padding: 2px 0;
-    border-radius: 5px;
-  }
-
-  .badge.pk {
-    background: #2b4959;
-    color: #ffffff;
-    box-shadow: 0 2px 5px rgba(43, 73, 89, 0.3);
-  }
-
-  .badge.fk {
-    background: #fff;
-    color: var(--gold-warm);
-    border: 1.5px solid var(--gold-sun);
-    box-shadow: 0 2px 5px rgba(229, 151, 56, 0.2);
-  }
-
-  .badge.none { visibility: hidden; }
-
-  .field.pk-row {
-    background: rgba(43, 73, 89, 0.08);
-    border-top: 1px solid rgba(43, 73, 89, 0.1);
-    border-bottom: 1px solid rgba(43, 73, 89, 0.1);
-  }
-
-  .field.fk-row .fname { color: #b86506; }
-  .field.computed .fname { font-style: italic; color: var(--nile-blue); }
-  .field.computed .badge { color: var(--nile-blue); border: 1px dashed var(--nile-blue); background: rgba(28, 124, 147, 0.08); }
-
-  footer {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 700;
-    color: var(--temple-brown);
-    font-size: 16px;
-    padding-bottom: 30px;
-    margin-top: 30px;
-  }
-
-  /* ===================== INTERACTIVITY & ANIMATION ===================== */
-  .card {
-    transition: box-shadow .45s ease, opacity .45s ease, filter .45s ease, transform .45s ease;
-  }
-
-  .card-header, .field.pk-row, .field.fk-row {
-    cursor: pointer;
-  }
-
-  .card-header:hover { filter: brightness(1.15); }
-  .field.pk-row:hover, .field.fk-row:hover { background: rgba(229, 151, 56, 0.22); }
-
-  .card.is-dim {
-    opacity: 0.35 !important;
-    filter: saturate(0.5) brightness(0.95);
-    transform: translateY(0) scale(0.99);
-  }
-
-  .card.is-connected {
-    opacity: 1;
-    border-color: var(--nile-blue);
-    box-shadow: 
-      0 0 0 2px var(--nile-light),
-      0 0 30px rgba(43, 123, 147, 0.35),
-      0 20px 35px -10px rgba(0,0,0,0.15);
-  }
-
-  .card.is-active {
-    opacity: 1;
-    transform: translateY(-6px);
-    animation: cardPulse 1.7s ease-in-out infinite;
-  }
-
-  @keyframes cardPulse {
-    0%, 100% {
-      box-shadow: 
-        0 0 0 3px var(--gold-sun),
-        0 0 35px rgba(229, 151, 56, 0.5),
-        0 25px 45px -10px rgba(0,0,0,0.2);
-    }
-    50% {
-      box-shadow: 
-        0 0 0 4px var(--gold-warm),
-        0 0 55px rgba(229, 151, 56, 0.85),
-        0 25px 45px -10px rgba(0,0,0,0.2);
-    }
-  }
-
-  .connectors path {
-    transition: opacity .45s ease, stroke-width .45s ease;
-  }
-
-  .connectors path.is-dim-line {
-    opacity: 0.12 !important;
-  }
-
-  .connectors path.is-active-line {
-    opacity: 1 !important;
-    stroke-width: 3.5;
-    stroke-dasharray: 8 6;
-    animation: flowLine 0.9s linear infinite;
-  }
-
-  @keyframes flowLine {
-    to { stroke-dashoffset: -28; }
-  }
-
-  .field.field-highlight {
-    border-radius: 6px;
-    background: linear-gradient(90deg, rgba(229, 151, 56, 0.4), rgba(229, 151, 56, 0.1) 88%) !important;
-    animation: fieldPulse 1.3s ease-in-out infinite;
-  }
-
-  @keyframes fieldPulse {
-    0%, 100% { box-shadow: inset 0 0 0 1px rgba(212, 131, 37, 0.7); }
-    50% { box-shadow: inset 0 0 0 2px rgba(229, 151, 56, 1), 0 0 12px rgba(229, 151, 56, 0.5); }
-  }
-
-  .field.field-highlight .badge.pk { box-shadow: 0 0 10px rgba(43, 73, 89, 0.6); }
-  .field.field-highlight .badge.fk {
-    box-shadow: 0 0 10px rgba(229, 151, 56, 0.8);
-    background: var(--gold-sun);
-    color: #fff;
-  }
-  .field.field-highlight .fname { color: #592e00; }
-
-  /* Animated Plane Group */
-  .plane-follower {
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-</style>
-</head>
-<body>
-
-<div class="scene-bg">
-  <div class="vignette"></div>
-</div>
-
-<div class="page">
-
-  <div class="brand">
-    <div class="brand-mark">
-      <span class="brand-glyph">✈️</span>
-    </div>
-    <h1>QUADRA WAY</h1>
-    <p class="subtitle">Global Tourism & Travel Database Architecture</p>
-    <div class="divider"></div>
-    <div class="legend">
-      <span><i class="dot pk"></i> Primary Key</span>
-      <span><i class="dot fk"></i> Foreign Key</span>
-      <span><i class="dot line"></i> Flight Route (Relationship)</span>
-      <span>✈️ Interactive Animated Flight Paths</span>
-    </div>
-  </div>
-
-  <div class="stage-outer">
-    <div class="stage" id="stage">
-
-      <div class="island-label" style="left:40px; top:10px;">🌴 BOOKINGS &amp; TRAVELERS</div>
-      <div class="island-label" style="left:1440px; top:10px;">🏛️ BRANCHES &amp; MANAGEMENT</div>
-
-      <svg class="connectors" id="connectors"></svg>
-
-      <!-- ============ CARDS ============ -->
-
-      <div class="card" id="c-Tourists" style="left:40px; top:60px; --i:0;">
-        <div class="card-header"><span class="icon">🧳</span> Tourists</div>
-        <div class="card-body">
-          <div class="field pk-row"><span class="badge pk">PK</span><span class="fname">Tourist_ID</span><span class="ftype">VARCHAR(50)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">FullName</span><span class="ftype">NVARCHAR(200)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">PhoneNumber</span><span class="ftype">UNIQUE</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Email</span><span class="ftype">UNIQUE</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Nationality</span><span class="ftype">NVARCHAR(100)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Gender</span><span class="ftype">M / F</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Age</span><span class="ftype">INT</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Date_Of_Birth</span><span class="ftype">DATE</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">ID_Number</span><span class="ftype">UNIQUE</span></div>
-        </div>
-      </div>
-
-      <div class="card" id="c-Transport" style="left:40px; top:420px; --i:1;">
-        <div class="card-header"><span class="icon">🚌</span> Transport</div>
-        <div class="card-body">
-          <div class="field pk-row"><span class="badge pk">PK</span><span class="fname">Transport_ID</span><span class="ftype">VARCHAR(50)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Type</span><span class="ftype">VARCHAR(100)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Provider_Name</span><span class="ftype">VARCHAR(200)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Cost_Per_Seat</span><span class="ftype">DECIMAL(10,2)</span></div>
-        </div>
-      </div>
-
-      <div class="card" id="c-Hotels" style="left:380px; top:60px; --i:2;">
-        <div class="card-header"><span class="icon">🏨</span> Hotels</div>
-        <div class="card-body">
-          <div class="field pk-row"><span class="badge pk">PK</span><span class="fname">Hotel_ID</span><span class="ftype">VARCHAR(50)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Hotel_Name</span><span class="ftype">VARCHAR(200)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">City</span><span class="ftype">VARCHAR(100)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Address</span><span class="ftype">VARCHAR(200)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Star_Rating</span><span class="ftype">DECIMAL(3,2)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Price_Per_Night</span><span class="ftype">DECIMAL(10,2)</span></div>
-        </div>
-      </div>
-
-      <div class="card" id="c-Tour_Package" style="left:380px; top:340px; --i:3;">
-        <div class="card-header"><span class="icon">🗺️</span> Tour_Package</div>
-        <div class="card-body">
-          <div class="field pk-row"><span class="badge pk">PK</span><span class="fname">Package_ID</span><span class="ftype">VARCHAR(50)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Price</span><span class="ftype">DECIMAL(10,2)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Duration_Days</span><span class="ftype">INT</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Origin</span><span class="ftype">VARCHAR(100)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Destination</span><span class="ftype">VARCHAR(100)</span></div>
-        </div>
-      </div>
-
-      <div class="card hub" id="c-Booking" style="left:720px; top:200px; --i:4;">
-        <div class="card-header"><span class="icon">🎫</span> Booking Hub</div>
-        <div class="card-body">
-          <div class="field"><span class="badge none">•</span><span class="fname">Booking_ID</span><span class="ftype">VARCHAR(50)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Booking_Date</span><span class="ftype">DATE</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Booking_Channel</span><span class="ftype">ENUM</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Payment_Method</span><span class="ftype">ENUM</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Payment_Status</span><span class="ftype">ENUM</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Cost</span><span class="ftype">DECIMAL(10,2)</span></div>
-          <div class="field fk-row" data-ref="c-Tourists"><span class="badge fk">FK</span><span class="fname">Tourist_ID</span><span class="ftype">→ Tourists</span></div>
-          <div class="field fk-row" data-ref="c-Tour_Package"><span class="badge fk">FK</span><span class="fname">Package_ID</span><span class="ftype">→ Tour_Package</span></div>
-          <div class="field fk-row" data-ref="c-Transport"><span class="badge fk">FK</span><span class="fname">Transport_ID</span><span class="ftype">→ Transport</span></div>
-          <div class="field fk-row" data-ref="c-Hotels"><span class="badge fk">FK</span><span class="fname">Hotel_ID</span><span class="ftype">→ Hotels</span></div>
-          <div class="field computed"><span class="badge">∑</span><span class="fname">Final_Price</span><span class="ftype">Cost × 1.10</span></div>
-        </div>
-      </div>
-
-      <div class="card" id="c-Reviews" style="left:1060px; top:60px; --i:5;">
-        <div class="card-header"><span class="icon">⭐</span> Reviews</div>
-        <div class="card-body">
-          <div class="field"><span class="badge none">•</span><span class="fname">ID</span><span class="ftype">VARCHAR(50)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Rating</span><span class="ftype">DECIMAL(3,2)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Comment</span><span class="ftype">NVARCHAR(500)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Date</span><span class="ftype">DATE</span></div>
-          <div class="field fk-row" data-ref="c-Tourists"><span class="badge fk">FK</span><span class="fname">Tourist_ID</span><span class="ftype">→ Tourists</span></div>
-          <div class="field fk-row" data-ref="c-Tour_Package"><span class="badge fk">FK</span><span class="fname">Package_ID</span><span class="ftype">→ Tour_Package</span></div>
-        </div>
-      </div>
-
-      <div class="card" id="c-Activities" style="left:1060px; top:340px; --i:6;">
-        <div class="card-header"><span class="icon">🎯</span> Activities</div>
-        <div class="card-body">
-          <div class="field"><span class="badge none">•</span><span class="fname">Act_ID</span><span class="ftype">VARCHAR(50)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Description</span><span class="ftype">NVARCHAR(MAX)</span></div>
-          <div class="field fk-row" data-ref="c-Tour_Package"><span class="badge fk">FK</span><span class="fname">Package_ID</span><span class="ftype">→ Tour_Package</span></div>
-        </div>
-      </div>
-
-      <div class="card" id="c-Branches" style="left:1440px; top:60px; --i:7;">
-        <div class="card-header"><span class="icon">🏛️</span> Branches</div>
-        <div class="card-body">
-          <div class="field pk-row"><span class="badge pk">PK</span><span class="fname">Branch_ID</span><span class="ftype">VARCHAR(50)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Branch_City</span><span class="ftype">VARCHAR(100)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Location</span><span class="ftype">VARCHAR(200)</span></div>
-          <div class="field fk-row" data-ref="c-Employees"><span class="badge fk">FK</span><span class="fname">Branch_Manager</span><span class="ftype">→ Employees</span></div>
-        </div>
-      </div>
-
-      <div class="card" id="c-Employees" style="left:1440px; top:320px; --i:8;">
-        <div class="card-header"><span class="icon">👔</span> Employees</div>
-        <div class="card-body">
-          <div class="field pk-row"><span class="badge pk">PK</span><span class="fname">Employee_ID</span><span class="ftype">VARCHAR(50)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Name</span><span class="ftype">VARCHAR(200)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">PhoneNumber</span><span class="ftype">UNIQUE</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Email</span><span class="ftype">UNIQUE</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Job_Title</span><span class="ftype">VARCHAR(100)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Salary</span><span class="ftype">DECIMAL(10,2)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Hire_Date</span><span class="ftype">DATE</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Address</span><span class="ftype">VARCHAR(200)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Gender</span><span class="ftype">M / F</span></div>
-          <div class="field fk-row" data-ref="c-Branches"><span class="badge fk">FK</span><span class="fname">Branch_ID</span><span class="ftype">→ Branches</span></div>
-        </div>
-      </div>
-
-      <div class="card" id="c-Employee_Language" style="left:1440px; top:720px; --i:9;">
-        <div class="card-header"><span class="icon">🗣️</span> Languages</div>
-        <div class="card-body">
-          <div class="field"><span class="badge none">•</span><span class="fname">ID</span><span class="ftype">VARCHAR(50)</span></div>
-          <div class="field"><span class="badge none">•</span><span class="fname">Language_Name</span><span class="ftype">VARCHAR(50)</span></div>
-          <div class="field fk-row" data-ref="c-Employees"><span class="badge fk">FK</span><span class="fname">Employee_ID</span><span class="ftype">→ Employees</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <footer>Quadra Way · Tourism & Travel Architecture Overview</footer>
-
-</div>
-
-<script>
-  const rels = [
-    {from:'c-Booking', to:'c-Tourists'},
-    {from:'c-Booking', to:'c-Tour_Package'},
-    {from:'c-Booking', to:'c-Transport'},
-    {from:'c-Booking', to:'c-Hotels'},
-    {from:'c-Reviews', to:'c-Tourists'},
-    {from:'c-Reviews', to:'c-Tour_Package'},
-    {from:'c-Activities', to:'c-Tour_Package'},
-    {from:'c-Employees', to:'c-Branches'},
-    {from:'c-Branches', to:'c-Employees'},
-    {from:'c-Employee_Language', to:'c-Employees'},
-  ];
-
-  let animationFrames = [];
-
-  function rectOf(id){
-    const el = document.getElementById(id);
-    const left = parseFloat(el.style.left);
-    const top = parseFloat(el.style.top);
-    const w = el.offsetWidth;
-    const h = el.offsetHeight;
-    return {left, top, w, h, cx:left+w/2, cy:top+h/2};
-  }
-
-  function edgePoint(rect, towardCx, towardCy){
-    const dx = towardCx - rect.cx;
-    const dy = towardCy - rect.cy;
-    const halfW = rect.w/2, halfH = rect.h/2;
-    let x, y;
-    if (Math.abs(dx) * halfH > Math.abs(dy) * halfW) {
-      x = rect.cx + (dx > 0 ? halfW : -halfW);
-      y = rect.cy + dy * (halfW / Math.abs(dx || 1));
-      y = Math.max(rect.top+14, Math.min(rect.top+rect.h-14, y));
-    } else {
-      x = rect.cx + dx * (halfH / Math.abs(dy || 1));
-      y = rect.cy + (dy > 0 ? halfH : -halfH);
-      x = Math.max(rect.left+14, Math.min(rect.left+rect.w-14, x));
-    }
-    return {x, y};
-  }
-
-  function clearPlaneAnimations() {
-    animationFrames.forEach(id => cancelAnimationFrame(id));
-    animationFrames = [];
-    document.querySelectorAll('.plane-follower').forEach(el => el.remove());
-  }
-
-  function draw(){
-    clearPlaneAnimations();
-    const svg = document.getElementById('connectors');
-    svg.innerHTML = `
-      <defs>
-        <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-          <feGaussianBlur stdDeviation="2.5" result="blur"/>
-          <feMerge>
-            <feMergeNode in="blur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-        <marker id="dotPK" markerWidth="10" markerHeight="10" refX="5" refY="5">
-          <circle cx="5" cy="5" r="4" fill="#2b4959" stroke="#ffffff" stroke-width="1.5"/>
-        </marker>
-        <marker id="dotFK" markerWidth="10" markerHeight="10" refX="5" refY="5">
-          <circle cx="5" cy="5" r="3.5" fill="#e59738" stroke="#ffffff" stroke-width="1.2"/>
-        </marker>
-      </defs>
-    `;
-
-    rels.forEach((r, i) => {
-      const a = rectOf(r.from);
-      const b = rectOf(r.to);
-      const p1 = edgePoint(a, b.cx, b.cy);
-      const p2 = edgePoint(b, a.cx, a.cy);
-      const midx = (p1.x+p2.x)/2;
-      const midy = (p1.y+p2.y)/2;
-      const dx = p2.x-p1.x, dy = p2.y-p1.y;
-      const len = Math.sqrt(dx*dx+dy*dy) || 1;
-      const nx = -dy/len, ny = dx/len;
-      const bend = Math.min(60, len*0.18);
-      const cx = midx + nx*bend;
-      const cy = midy + ny*bend;
-
-      const path = document.createElementNS('http://www.w3.org/2000/svg','path');
-      path.setAttribute('id', `path-${i}`);
-      path.setAttribute('d', `M ${p1.x} ${p1.y} Q ${cx} ${cy} ${p2.x} ${p2.y}`);
-      path.setAttribute('fill','none');
-      path.setAttribute('stroke','url(#lineGrad)');
-      path.setAttribute('stroke-width','2.2');
-      path.setAttribute('filter','url(#glow)');
-      path.setAttribute('marker-start','url(#dotFK)');
-      path.setAttribute('marker-end','url(#dotPK)');
-      path.setAttribute('opacity','0');
-      path.dataset.relIndex = i;
-      path.dataset.baseOpacity = '0.9';
-      path.style.transition = 'opacity 0.6s ease';
-      svg.appendChild(path);
-      requestAnimationFrame(()=>{ setTimeout(()=>{ path.style.opacity = path.dataset.baseOpacity; }, 500); });
-    });
-
-    const grad = document.createElementNS('http://www.w3.org/2000/svg','linearGradient');
-    grad.setAttribute('id','lineGrad');
-    grad.setAttribute('x1','0%'); grad.setAttribute('y1','0%');
-    grad.setAttribute('x2','100%'); grad.setAttribute('y2','0%');
-    grad.innerHTML = `
-      <stop offset="0%" stop-color="#e59738"/>
-      <stop offset="100%" stop-color="#1c7c93"/>
-    `;
-    svg.querySelector('defs').appendChild(grad);
-  }
-
-  function animatePlaneOnPath(pathEl) {
-    const svg = document.getElementById('connectors');
-    const pathLen = pathEl.getTotalLength();
-    
-    const planeGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    planeGroup.setAttribute('class', 'plane-follower');
-    
-    const planeText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    planeText.textContent = '✈️';
-    planeText.setAttribute('font-size', '18');
-    planeText.setAttribute('text-anchor', 'center');
-    planeText.setAttribute('dominant-baseline', 'central');
-
-    planeGroup.appendChild(planeText);
-    svg.appendChild(planeGroup);
-
-    let progress = 0;
-    const speed = 0.006; 
-
-    function step() {
-      progress += speed;
-      if (progress > 1) progress = 0;
-
-      const pt1 = pathEl.getPointAtLength(progress * pathLen);
-      const pt2 = pathEl.getPointAtLength(Math.min((progress + 0.01), 1) * pathLen);
-      
-      const angle = Math.atan2(pt2.y - pt1.y, pt2.x - pt1.x) * (180 / Math.PI);
-
-      planeGroup.setAttribute('transform', `translate(${pt1.x - 9}, ${pt1.y - 9}) rotate(${angle}, 9, 9)`);
-
-      const frameId = requestAnimationFrame(step);
-      animationFrames.push(frameId);
-    }
-
-    step();
-  }
-
-  let selectedTable = null;
-
-  function clearHighlights(){
-    clearPlaneAnimations();
-    document.querySelectorAll('.card').forEach(c => c.classList.remove('is-active','is-connected','is-dim'));
-    document.querySelectorAll('.connectors path').forEach(p => p.classList.remove('is-active-line','is-dim-line'));
-    document.querySelectorAll('.field').forEach(f => f.classList.remove('field-highlight'));
-    document.body.classList.remove('has-selection');
-  }
-
-  function applySelection(tableId){
-    clearHighlights();
-    selectedTable = tableId;
-    if (!tableId) return;
-
-    document.body.classList.add('has-selection');
-
-    const relatedIdx = [];
-    const connected = new Set();
-    rels.forEach((r, i) => {
-      if (r.from === tableId || r.to === tableId) {
-        relatedIdx.push(i);
-        connected.add(r.from === tableId ? r.to : r.from);
-      }
-    });
-
-    document.querySelectorAll('.card').forEach(c => {
-      if (c.id === tableId) c.classList.add('is-active');
-      else if (connected.has(c.id)) c.classList.add('is-connected');
-      else c.classList.add('is-dim');
-    });
-
-    document.querySelectorAll('.connectors path').forEach(p => {
-      const idx = parseInt(p.dataset.relIndex, 10);
-      if (relatedIdx.includes(idx)) {
-        p.classList.add('is-active-line');
-        animatePlaneOnPath(p);
-      } else {
-        p.classList.add('is-dim-line');
-      }
-    });
-
-    rels.forEach(r => {
-      let sourceId, targetId;
-      if (r.from === tableId) { sourceId = r.from; targetId = r.to; }
-      else if (r.to === tableId) { sourceId = r.from; targetId = r.to; }
-      else return;
-
-      const fkRow = document.querySelector('#' + sourceId + ' .fk-row[data-ref="' + targetId + '"]');
-      if (fkRow) fkRow.classList.add('field-highlight');
-
-      const pkRow = document.querySelector('#' + targetId + ' .pk-row');
-      if (pkRow) pkRow.classList.add('field-highlight');
-    });
-  }
-
-  function toggleSelect(tableId){
-    applySelection(selectedTable === tableId ? null : tableId);
-  }
-
-  function initInteractivity(){
-    document.querySelectorAll('.card-header, .field.pk-row').forEach(el => {
-      el.addEventListener('click', e => {
-        e.stopPropagation();
-        toggleSelect(el.closest('.card').id);
-      });
-    });
-
-    document.querySelectorAll('.field.fk-row').forEach(el => {
+      el.style.cursor = 'pointer';
       el.addEventListener('click', e => {
         e.stopPropagation();
         const ref = el.dataset.ref;
